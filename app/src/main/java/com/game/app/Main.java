@@ -1,7 +1,4 @@
 package com.game.app;
-
-
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,6 +17,7 @@ public class Main extends Application {
        try {
            BorderPane root = new BorderPane();
            Scene scene = new Scene(root, Globals.APP_WIDTH, Globals.APP_HEIGHT);
+           primaryStage.setTitle("Tic Tac Toe");
            initLayout(root);
            primaryStage.setScene(scene);
            primaryStage.show();
@@ -37,7 +35,8 @@ public class Main extends Application {
             public void handle(ActionEvent e) {
                 infocenter.hideStartButton();
                 infocenter.updateMessage("Player X's Turn");
-                System.out.println("Game is starting!!!");
+                tileBoard.startNewGame();
+
             }
         };
     }
@@ -58,6 +57,7 @@ public class Main extends Application {
 
     private void initTileBoard(BorderPane root) {
              tileBoard = new TileBoard(infocenter);
+
         root.getChildren().add(tileBoard.getStackPane());
     }
 
